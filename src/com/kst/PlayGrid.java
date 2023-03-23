@@ -1,8 +1,9 @@
+package com.kst;
+
 import javax.swing.*;
 import java.awt.*;
 
 class PlayGrid {
-
     private int[][] elems;
     private int[][] conditions;     //[left, top, right, bottom]
 
@@ -18,7 +19,6 @@ class PlayGrid {
         }
     }
 
-
     private void createGrid() {
         int len = this.elems.length;
         //Начальный квадрат
@@ -29,7 +29,6 @@ class PlayGrid {
         }
 
         int numRand = 10;
-        //Перемешиваем numRand раз
         for (int i = 0; i < numRand; ++i) {
             changeColumns((int) (Math.random() * 10) % (len - 1), (int) (Math.random() * 10) % (len - 1));
             changeRows((int) (Math.random() * 10) % (len - 1), (int) (Math.random() * 10) % (len - 1));
@@ -40,12 +39,10 @@ class PlayGrid {
         int len = this.elems.length;
         int[][] tmpArr;
 
-        //Вычисляем боковые условия
         tmpArr = calculate(len, true);
         System.arraycopy(tmpArr[0], 0, this.conditions[0], 0, len);
         System.arraycopy(tmpArr[1], 0, this.conditions[2], 0, len);
 
-        //Вычисляем основные условия
         tmpArr = calculate(len, false);
         System.arraycopy(tmpArr[0], 0, this.conditions[1], 0, len);
         System.arraycopy(tmpArr[1], 0, this.conditions[3], 0, len);
@@ -61,7 +58,6 @@ class PlayGrid {
             tmpArrStraight[i] = 1;
             tmpArrReverse[i] = 1;
 
-            //Условия в прямом направлении(слева или сверху)
             bufMax = isSide ? this.elems[i][0] : this.elems[0][i];
             for (int j = 1; j < len; ++j) {
                 check = isSide ? (this.elems[i][j] > bufMax) : (this.elems[j][i] > bufMax);
@@ -73,7 +69,6 @@ class PlayGrid {
                     break;
             }
 
-            //Условия в обратном направлении(справа или снизу)
             bufMax = isSide ? this.elems[i][len - 1] : this.elems[len - 1][i];
             for (int j = len - 1 - 1; j >= 0; --j) {
                 check = isSide ? (this.elems[i][j] > bufMax) : (this.elems[j][i] > bufMax);
@@ -99,7 +94,6 @@ class PlayGrid {
             this.elems[i][k] += this.elems[i][l] - (this.elems[i][l] = this.elems[i][k]);
         }
     }
-
 
     int[][] getElems() {
         return elems;
@@ -131,7 +125,7 @@ class PlayGrid {
     void showGrid() {
         int len = this.level;
         JFrame frame = new JFrame("Answer");
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         frame.setLocationRelativeTo(null);
         frame.getContentPane().setLayout(new GridLayout(len, len, 1, 1));
         for(int i=0; i<len; ++i) {
@@ -142,8 +136,8 @@ class PlayGrid {
                 label.setFont(new Font("Verdana", Font.BOLD, 25));
                 label.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
                 label.setPreferredSize(new Dimension(50, 50));
-                label.setHorizontalAlignment(JLabel.CENTER);
-                label.setVerticalAlignment(JLabel.CENTER);
+                label.setHorizontalAlignment(SwingConstants.CENTER);
+                label.setVerticalAlignment(SwingConstants.CENTER);
                 frame.add(label);
             }
         }

@@ -1,3 +1,5 @@
+package com.kst;
+
 import javax.swing.*;
 
 public class Main {
