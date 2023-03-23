@@ -1,14 +1,15 @@
+package com.kst;
+
 import javax.swing.*;
 import java.awt.*;
 
 class GamePanel extends JFrame {
-
     private PlayGrid compGrid;
     private PlayGrid userGrid;
 
     GamePanel(int level) {
         super("Floors. Level: " + level);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         this.getContentPane().setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
@@ -44,28 +45,24 @@ class GamePanel extends JFrame {
         JLabel label;
 
         for (int i = 0; i < len; i++) {
-            //Left
             label = new JLabel(Integer.toString(conditions[0][i]));
             setLabelConditionsOption(label);
             gbc.gridx = 0;
             gbc.gridy = i + 1;
             this.add(label, gbc);
 
-            //Top
             label = new JLabel(Integer.toString(conditions[1][i]));
             setLabelConditionsOption(label);
             gbc.gridx = i + 1;
             gbc.gridy = 0;
             this.add(label, gbc);
 
-            //Right
             label = new JLabel(Integer.toString(conditions[2][i]));
             setLabelConditionsOption(label);
             gbc.gridx = 1 + len + 1 - 1;
             gbc.gridy = i + 1;
             this.add(label, gbc);
 
-            //Bot
             label = new JLabel(Integer.toString(conditions[3][i]));
             setLabelConditionsOption(label);
             gbc.gridx = i + 1;
@@ -80,8 +77,8 @@ class GamePanel extends JFrame {
         label.setFont(new Font("Verdana", Font.BOLD, 25));
         label.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         label.setPreferredSize(new Dimension(50, 50));
-        label.setHorizontalAlignment(JLabel.CENTER);
-        label.setVerticalAlignment(JLabel.CENTER);
+        label.setHorizontalAlignment(SwingConstants.CENTER);
+        label.setVerticalAlignment(SwingConstants.CENTER);
     }
 
     private void addButtons(int level, GridBagConstraints gbc) {
@@ -91,7 +88,7 @@ class GamePanel extends JFrame {
             JFrame frame = new JFrame();
             frame.setResizable(false);
             frame.setUndecorated(true);
-            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
             frame.setLocationRelativeTo(null);
             frame.setSize(150, 100);
 
@@ -105,9 +102,8 @@ class GamePanel extends JFrame {
             frame.add(button, BorderLayout.CENTER);
 
             frame.setVisible(true);
-
-//            System.out.println(this.userGrid.isEqual(this.compGrid));
         });
+
         gbc.gridx = 0;
         gbc.gridy = 0;
         this.add(checkButton, gbc);

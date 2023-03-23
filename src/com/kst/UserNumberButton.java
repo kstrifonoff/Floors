@@ -1,7 +1,8 @@
+package com.kst;
+
 import javax.swing.*;
 
 class UserNumberButton extends JButton {
-
     void setValue(int value, int x, int y) {
         String text = (value == 0) ? "*" : Integer.toString(value);
         this.setText(text);

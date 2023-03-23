@@ -1,15 +1,16 @@
+package com.kst;
+
 import javax.swing.*;
 import java.awt.*;
 
 class ChoicePanel extends JFrame {
-
     private int value = 0;
 
     ChoicePanel(UserNumberButton parent, int maxValue, int x, int y) {
         super();
 
         this.getContentPane().setLayout(new GridLayout(4, 3, 2, 2));
-        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         this.setSize(150, 200);
 
         JButton button;
@@ -27,7 +28,6 @@ class ChoicePanel extends JFrame {
             }
         }
 
-        //Кнопка очистки поля
         button = new JButton("X");
         button.setFont(new Font("Verdana", Font.BOLD, 13));
         button.addActionListener(e -> {

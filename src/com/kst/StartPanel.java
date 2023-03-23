@@ -1,3 +1,5 @@
+package com.kst;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -5,8 +7,7 @@ class StartPanel extends JFrame {
     StartPanel(String title) {
         super(title);
         this.setSize(250, 100);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         JButton startButton = new JButton("New Game");
         JButton exitButton = new JButton("Exit");
@@ -23,7 +24,6 @@ class StartPanel extends JFrame {
         });
         exitButton.addActionListener(e -> System.exit(0));
 
-
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.fill = GridBagConstraints.BOTH;
         gbc.insets = new Insets(2, 2, 2, 2);
@@ -38,7 +38,5 @@ class StartPanel extends JFrame {
         gbc.gridx = 1;
         gbc.gridy = 1;
         this.add(exitButton, gbc);
-
     }
-
 }
