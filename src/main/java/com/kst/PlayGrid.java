@@ -21,7 +21,6 @@ class PlayGrid {
 
     private void createGrid() {
         int len = this.elems.length;
-        //Начальный квадрат
         for (int i = 0; i < len; i++) {
             for (int j = 0; j < len; j++) {
                 this.elems[i][j] = (i + j) % len + 1;
